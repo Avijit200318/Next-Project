@@ -5,6 +5,6 @@ export interface ApiResponse{
     success: boolean,
     message: string,
     isAcceptingMessages?: boolean,
-    messages: Array<Message>,
+    messages?: Array<Message>,
 }
 // ? means its optional response we may or may not send it
