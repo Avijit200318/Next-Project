@@ -8,6 +8,7 @@ export async function POST(request: Request) {
 
     try {
         const { username, email, password } = await request.json();
+        console.log(username, email, password);
 
         const exisitingUserVerifyByUsername = await UserModel.findOne({
             username, isVerified: true
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
                 const hashedPassword = await bcryptjs.hash(password, 10);
                 existingUserByEmail.password = hashedPassword;
                 existingUserByEmail.verifyCode = verifyCode;
-                existingUserByEmail.veifyCodeExpiry = new Date(Date.now() + 3600000);
+                existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000);
                 await existingUserByEmail.save();
             }
         } else {

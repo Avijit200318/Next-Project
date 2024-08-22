@@ -64,9 +64,7 @@ export default function signin() {
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsSubmitting(true);
     try {
-      const res = await axios.post<ApiResponse>('/api/sign-up', {
-        data
-      });
+      const res = await axios.post<ApiResponse>('/api/sign-up', data);
       toast({
         title: 'Success',
         description: res.data.message
